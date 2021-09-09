@@ -6,8 +6,8 @@ class Form extends Component {
       this.updateInput = this.updateInput.bind(this)
     }
       
-    updateInput = (event) => {
-      this.props.onChange(event.target.value)
+  updateInput = (evt) => {
+      this.props.onChange(evt.target.value)
     }  
     
     render() {    

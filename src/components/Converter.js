@@ -1,7 +1,6 @@
 /* eslint-disable no-unreachable */
 import Form from './Form'
 import { Component } from 'react'
-
 class Converter extends Component {
   
   constructor(props) {
@@ -22,26 +21,24 @@ class Converter extends Component {
       ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : null;
   }
 
-  outputText = (event) => {
-      if(event.length === 7 && this.hexToRGB(event) !== null) {
-        return this.hexToRGB(event)
+  outputText = (val) => {
+      if(val.length === 7 && this.hexToRGB(val) !== null) {
+        return this.hexToRGB(val)
        }
-       else if(event.length === 7 && this.hexToRGB(event) === null) {
+       else if(val.length === 7 && this.hexToRGB(val) === null) {
         return 'Error'
        } 
   }
-  errorState(event) {
-    
-  }
   
-  updateInputState = (event) => {
-    let outputState = this.outputText(event)
+  
+  updateInputState = (val) => {
+    let outputState = this.outputText(val)
     this.setState({
-      input: event.trim(),
-      rgb: event.length === 7 ? this.hexToRGB(event) : '',
-      output: event.length === 7 ? `${outputState}` : 'rgb'
+      input: val.trim(),
+      rgb: val.length === 7 ? this.hexToRGB(val) : '',
+      output: val.length === 7 ? `${outputState}` : 'rgb'
     })
-    if(this.outputText(event) === 'Error') {
+    if(this.outputText(val) === 'Error') {
       this.setState({
         rgb: 'rgb(212, 17, 62)'
       })
